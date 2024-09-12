@@ -1,0 +1,43 @@
+{
+  "scripts": {
+    "dev": "parcel ./src/*.html ./src/components/*.html ./src/scss/index.scss ./src/scss/local-styles/*.scss",
+    "build": "rm -rf dist && parcel build src/*.html --no-source-maps --no-content-hash --no-cache --public-url ./"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "reset-css": "^5.0.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.8.1",
+    "@tsconfig/recommended": "^1.0.1",
+    "parcel": "^2.8.1",
+    "parcel-namer-rewrite": "^2.0.0-rc.2",
+    "parcel-plugin-clean-easy": "^1.0.2",
+    "posthtml-doctype": "^1.1.1",
+    "posthtml-include": "^1.7.4"
+  },
+  "parcelCleanPaths": [
+    "dist",
+    ".cache"
+  ],
+  "parcel-namer-rewrite": {
+    "chain": "@parcel/namer-default",
+    "profiles": {
+      "development": {
+        "disable": true
+      }
+    },
+    "rules": {
+      "(.*).css": "css/$1{.hash}.css",
+      "(.*).js": "js/$1{.hash}.js",
+      "(.*).png": "images/$1{.hash}.png",
+      "(.*).jpg": "images/$1{.hash}.jpg",
+      "(.*).webp": "images/$1{.hash}.webp",
+      "(.*).avif": "images/$1{.hash}.avif",
+      "(.*).svg": "images/$1{.hash}.svg",
+      "(.*).ttf": "fonts/$1{.hash}.ttf",
+      "(.*).woff": "fonts/$1{.hash}.woff",
+      "(.*).woff2": "fonts/$1{.hash}.woff2"
+    }
+  }
+}

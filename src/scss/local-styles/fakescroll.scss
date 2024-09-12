@@ -1,0 +1,70 @@
+.fakeScroll {
+  overflow: visible !important;
+
+  &__wrap {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__content {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: auto;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__track {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    cursor: default;
+
+    right: 4px;
+    background-color: #3d4050;
+    border-radius: 3px;
+    width: 7px;
+    margin: 2px 0;
+    z-index: 9;
+  }
+
+  &__bar {
+    height: 53px;
+    width: 7px;
+    background-color: #3e9cdc;
+    border-radius: 3px;
+    position: relative;
+    right: 0;
+    top: 0;
+    z-index: 0;
+    transition: background 0.1s;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    &.fakeScroll--grabbed {
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing;
+      background: white;
+    }
+  }
+}
+
+body.fakeScroll--grabbed {
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
