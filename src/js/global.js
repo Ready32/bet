@@ -11,8 +11,8 @@ const main = () => {
         once: true,
     });
 
-
     document.addEventListener("DOMContentLoaded", () => {
+
         document.querySelectorAll("[data-fake-scroll]").forEach((scroll) => {
             scroll.fakeScroll();
         });
@@ -78,21 +78,21 @@ const main = () => {
         })();
 
 
-        const forms = document.querySelectorAll('form');
+        (function successInputFile() {
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                const inputFile = form.querySelector('input[type="file"]')
+                const span = inputFile.nextElementSibling;
 
-        forms.forEach(form => {
-            const inputFile = form.querySelector('input[type="file"]')
-            const span = inputFile.nextElementSibling;
-
-            inputFile.addEventListener('change', () => {
-                if (inputFile.files && inputFile.files.length > 0) {
-                    span.textContent = 'Файл успешно загружен';
-                    span.style.color = 'green';
-                }
+                inputFile.addEventListener('change', () => {
+                    if (inputFile.files && inputFile.files.length > 0) {
+                        span.textContent = 'Файл успешно загружен';
+                        span.style.color = 'green';
+                    }
+                })
             })
-            console.log(inputFile);
+        })()
 
-        })
 
     });
 };
