@@ -5,11 +5,15 @@
 @import url("/src/assets/fonts/font.css");
 
 :root {
+  --black: #000;
   --dark: #1a1a1a;
   --light-dark: #3d4050;
   --light: #fff;
   --gray: #6f6d7b;
+  --light-gray: #c3c3c3;
+  --accent: #3e9cdc;
   --accent-light: #3d9cdb;
+
 }
 
 html,
@@ -31,13 +35,13 @@ body.off-scroll {
 .h1 {
   @include text.h1;
   text-transform: uppercase;
-  color: #000;
+  color: var(--black);
   @include media.below("md") {
     word-wrap: break-word;
   }
 
   span {
-    color: #3e9cdc;
+    color: var(--accent);
   }
 }
 
@@ -51,7 +55,7 @@ body.off-scroll {
   }
 
   span {
-    color: #3e9cdc;
+    color: var(--accent);
   }
 }
 
@@ -95,9 +99,7 @@ body.off-scroll {
 
 .btn {
   padding: 15px 10px;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 15.6px;
+  @include text.btn;
   text-align: center;
   text-transform: uppercase;
   border-radius: 4px;
@@ -169,6 +171,7 @@ body.off-scroll {
     &.active {
       transform: translateX(0);
       background: #10101d;
+      z-index: 10;
     }
   }
 
@@ -193,8 +196,7 @@ body.off-scroll {
 
   &__nav-list-item {
     * {
-      font-size: 13px;
-      line-height: 15.6px;
+      @include text.btn;
       font-weight: 600;
       color: var(--light);
       text-transform: uppercase;
@@ -273,7 +275,7 @@ body.off-scroll {
         width: 4.94px;
         height: 1.51px;
         margin: 10px;
-        background-color: #000;
+        background-color: var(--black);
       }
     }
   }
@@ -326,6 +328,7 @@ body.off-scroll {
 
   &__advantages-list {
     display: grid;
+
     grid-template-columns: repeat(5, 1fr);
     gap: 30px;
     position: relative;
@@ -346,6 +349,8 @@ body.off-scroll {
   }
 
   &__advantages-item {
+    max-width: 290px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -387,6 +392,7 @@ body.off-scroll {
     }
 
     @include media.below("md") {
+      max-width: 100%;
       &::after {
         content: "";
         top: 24px;
@@ -445,7 +451,7 @@ body.off-scroll {
     gap: 80px;
 
     @include media.below("md") {
-      gap: 24px;
+      gap: 40px;
     }
   }
 }
@@ -542,13 +548,15 @@ body.off-scroll {
 
     li {
       cursor: pointer;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 34px;
+      @include text.body-regular-18;
       color: var(--light);
 
       &.active {
         color: var(--accent-light);
+      }
+
+      &:not(:last-child){
+        margin-bottom: 10px;
       }
     }
   }
@@ -583,9 +591,7 @@ body.off-scroll {
   }
 
   &__input-range-text {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 21.6px;
+    @include text.body-regular-18;
     color: var(--light);
     display: flex;
     align-items: center;
@@ -653,7 +659,7 @@ body.off-scroll {
   &__hr {
     width: 1px;
     height: 18px;
-    background-color: #c3c3c3;
+    background-color: var(--light-gray);
 
     @include media.below("md") {
       display: none;
@@ -684,9 +690,7 @@ body.off-scroll {
 
     * {
       display: inline-block;
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 15.6px;
+      @include text.btn;
       color: var(--light);
     }
 
@@ -703,7 +707,7 @@ body.off-scroll {
     }
 
     span {
-      color: #c3c3c3;
+      color: var(--light-gray);
     }
   }
 
